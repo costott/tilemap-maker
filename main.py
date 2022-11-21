@@ -13,13 +13,16 @@ class TilemapMaker:
         pygame.display.set_caption("tilemap maker by costott")
         self.clock = pygame.time.Clock()
 
+        if not os.path.exists("tile_images"):
+            os.mkdir("tile_images")
+
         self.tilesize: int = None
         self.columns: int = None 
         self.rows: int = None
 
         self.get_tile_images()
 
-        # ERRORS    
+        # ERRORS
         self.main_error_text = pygame.font.Font(None, 75).render("NO IMAGES IN TILE_IMAGES", True, "white")
         self.main_error_rect = self.main_error_text.get_rect(midbottom = (settings.WIDTH/2, settings.HEIGHT/2))
         self.minor_error_text = pygame.font.Font(None, 40).render("add your tiles to the 'tile_images' folder", True, "white")
